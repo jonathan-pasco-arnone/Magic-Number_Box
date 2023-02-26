@@ -10,18 +10,14 @@ def magic_square_generator(magic_square, digit):
     """ Generates all possible combinations of squares """
     # Checks if the square works, then prints it if it does
 
-    if digit == 8:
-        while(magic_square[8] != 9):
-            if (square_checker(magic_square)):
-                print_square(magic_square)
-            magic_square[8] += 1
+    while(magic_square[digit] < 9):
+        if (square_checker(magic_square)):
             print_square(magic_square)
-    else:
-        for index in range(0,8,1):
-            if magic_square[digit + 1] == 9:
-                magic_square[digit] += 1
-                magic_square[digit + 1] = 0
+        if digit != 8:
             magic_square_generator(magic_square, digit + 1)
+        magic_square[digit] += 1
+    magic_square[digit] = 0
+
 
 def print_square(magic_square):
     """ Prints the magic square in proper format """
